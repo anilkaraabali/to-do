@@ -1,0 +1,17 @@
+body {
+    font-family: $body-font-family;
+    font-size: $base-font-size;
+    font-kerning: normal;
+    line-height: $base-line-height;
+    background: #fafbfc;
+    color: #343434;
+    height: 100%;
+    /* Support for IE. */
+    font-feature-settings: 'liga' 0;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+}

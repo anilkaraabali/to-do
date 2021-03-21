@@ -1,0 +1,30 @@
+$header: 64px;
+$responsive-header: 56px;
+$menu: 72px;
+$menu-large: 239px;
+
+.App {
+    display: grid;
+    grid-template-columns: #{$menu} 1fr;
+    grid-template-rows: #{$responsive-header} 1fr;
+    grid-template-areas: 'header header' 'menu main';
+    min-height: 100%;
+
+    &--open {
+        grid-template-columns: #{$menu-large} 1fr;
+    }
+
+    @include respond-above(md) {
+        grid-template-rows: #{$header} 1fr auto;
+    }
+
+    &__main {
+        grid-area: main;
+        min-height: calc(100% - #{$responsive-header});
+        padding: 16px;
+
+        @include respond-above(md) {
+            min-height: calc(100% - #{$header});
+        }
+    }
+}
