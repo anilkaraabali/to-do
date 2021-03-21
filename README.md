@@ -1,6 +1,26 @@
-# CRA Starter
+<div align="center">
+  <img src="https://i.ibb.co/Dt09R65/logo.png"/>
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# To-do
+
+Before running, create a `.env` file based off of the provided `example.env` file. Make sure to provide a valid `HASURA_ADMIN_SECRET` to authorize API requests to the Todo backend.
+
+## Getting started
+
+In the project directory, you can run:
+
+```sh
+# NPM
+npm install
+
+# YARN
+yarn
+```
+
+## Demo
+
+You can see the demo of the app on the [Heroku](https://whispering-falls-88607.herokuapp.com/)
 
 ## Available Scripts
 
@@ -21,4 +41,12 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Integrations
+- Database: [HASURA](https://hasura.io/docs/latest/graphql/core/deployment/deployment-guides/heroku.html#option-1-one-click-deployment)
+- Lang Detector: [i18next](https://www.i18next.com/)
+- UI Library: [Material UI](https://material-ui.com/)
+- Form Validations: [React Hook Form](https://react-hook-form.com/)
+- Prop Validations: [PropTypes](https://www.npmjs.com/package/prop-types)
+- Redux: [Redux Toolkit](https://redux-toolkit.js.org/)
+
+
