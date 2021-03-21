@@ -18,9 +18,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { useTheme } from '@material-ui/core/styles'
 import { useStyles } from './style'
 
-import { STATUSES } from '../../../constants/statuses'
-
-const USERS = ['Anıl Karaabalı', 'John Doe', 'Josh Mccallum', 'Akaash Reid']
+import { STATUSES, USERS } from '../../../constants'
 
 const TodoAdd = ({ handleClose, open = false, todo = {}, isUpdate = false }) => {
     const classes = useStyles()
@@ -134,7 +132,7 @@ const TodoAdd = ({ handleClose, open = false, todo = {}, isUpdate = false }) => 
                             id="dueDate"
                             name="dueDate"
                             label={t('dueDate')}
-                            defaultValue={todo.dueDate || ''}
+                            defaultValue={todo.dueDate?.substring(0, 19) || ''}
                             type="datetime-local"
                             inputRef={register}
                             className={classes.field}

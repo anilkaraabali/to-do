@@ -15,7 +15,7 @@ import { useStyles } from './style'
 
 import TodoAdd from '../TodoAdd'
 
-import { STATUSES } from '../../../constants/statuses'
+import { STATUSES } from '../../../constants'
 
 const Todo = ({ todo, open, handleClose, selectedTodo, setSelectedTodo, deleteTodo }) => {
     const classes = useStyles()
