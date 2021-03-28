@@ -59,8 +59,8 @@ const TodoStasus = ({ todo }) => {
                 open={!!anchorEl}
                 onClose={handleClose}
             >
-                {STATUSES.map(({ name, color }) => (
-                    <MenuItem key={`status-${name}`} onClick={() => handleSubmit(name)}>
+                {STATUSES.map(({ name, status, color }, index) => (
+                    <MenuItem key={`status-${index}`} onClick={() => handleSubmit(status)}>
                         <div
                             className={`${classes.status} ${classes.itemStatus}`}
                             style={{ backgroundColor: color }}
