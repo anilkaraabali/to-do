@@ -30,7 +30,6 @@ const LanguageDetector = () => {
                 aria-controls="language-detector"
                 aria-haspopup="true"
                 onClick={handleModalOpen}
-                color="inherit"
             >
                 <LanguageOutlinedIcon />
             </IconButton>

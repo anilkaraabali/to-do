@@ -9,6 +9,7 @@
   "create": "Create",
   "delete-all": "Delete All",
   "dueDate": "Due Date",
+  "assign": "Assign",
   "assignee": "Assignee",
   "status": "Status",
   "description": "Description",
@@ -28,7 +29,5 @@
   "dialog-confirm-btn-text": "Confirm",
   "dialog-cancel-btn-text": "Cancel",
   "delete-todos-dialog-content": "This process is irreversible, are you sure you want to continue?",
-  "warning": "Warning",
-  "days-left": "days-left",
-  "last-day": "Last day"
+  "warning": "Warning"
 }

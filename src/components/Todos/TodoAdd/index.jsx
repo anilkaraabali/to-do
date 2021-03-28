@@ -18,6 +18,8 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { useTheme } from '@material-ui/core/styles'
 import { useStyles } from './style'
 
+import LanguageDetector from '../../LanguageDetector'
+
 import { STATUSES, USERS } from '../../../constants'
 
 const TodoAdd = ({ handleClose, open = false, todo = {}, isUpdate = false }) => {
@@ -49,6 +51,7 @@ const TodoAdd = ({ handleClose, open = false, todo = {}, isUpdate = false }) => 
             aria-labelledby="form-dialog-title"
         >
             <DialogActions>
+                <LanguageDetector />
                 <IconButton aria-label="close modal" onClick={handleClose}>
                     <CloseOutlinedIcon />
                 </IconButton>
@@ -74,6 +77,8 @@ const TodoAdd = ({ handleClose, open = false, todo = {}, isUpdate = false }) => 
                             margin="normal"
                             variant="outlined"
                             fullWidth
+                            required
+                            autoFocus
                         />
 
                         <TextField
@@ -96,6 +101,7 @@ const TodoAdd = ({ handleClose, open = false, todo = {}, isUpdate = false }) => 
                             getOptionLabel={option =>
                                 typeof option === 'string' ? option : option.status
                             }
+                            getOptionDisabled={option => todo.status === option.status}
                             defaultValue={todo.status || STATUSES[0]}
                             className={classes.field}
                             renderInput={params => (
@@ -114,6 +120,7 @@ const TodoAdd = ({ handleClose, open = false, todo = {}, isUpdate = false }) => 
                             id="assign"
                             options={USERS}
                             getOptionLabel={option => option}
+                            getOptionDisabled={option => todo.assign === option}
                             defaultValue={todo.assign || ''}
                             className={classes.field}
                             renderInput={params => (
@@ -135,6 +142,7 @@ const TodoAdd = ({ handleClose, open = false, todo = {}, isUpdate = false }) => 
                             defaultValue={todo.dueDate?.substring(0, 19) || ''}
                             type="datetime-local"
                             inputRef={register}
+                            variant="outlined"
                             className={classes.field}
                             InputLabelProps={{
                                 shrink: true

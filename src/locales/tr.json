@@ -10,6 +10,7 @@
   "delete-all": "Tümünü Sil",
   "dueDate": "Teslim Tarihi",
   "assignee": "Kişi",
+  "assign": "Kişi Ekle",
   "status": "Statü",
   "description": "Açıklama",
   "title": "Başlık",
@@ -28,7 +29,5 @@
   "dialog-confirm-btn-text": "Onayla",
   "dialog-cancel-btn-text": "Vazgeç",
   "delete-todos-dialog-content": "Bu işlem geri alınamaz, devam etmek istediğinizden emin misiniz?",
-  "warning": "Uyarı",
-  "days-left": "gün kaldı",
-  "last-day": "Son gün"
+  "warning": "Uyarı"
 }

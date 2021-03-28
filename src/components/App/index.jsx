@@ -43,7 +43,7 @@ const App = () => {
 
     return (
         <CommonProvider>
-            <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleClose}>
+            <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity={error ? 'error' : 'success'}>
                     {error ? error : success}
                 </Alert>

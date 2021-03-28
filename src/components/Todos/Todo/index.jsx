@@ -1,51 +1,34 @@
 import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { useTranslation } from 'react-i18next'
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 import Grid from '@material-ui/core/Grid'
 import IconButton from '@material-ui/core/IconButton'
-import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
-import Tooltip from '@material-ui/core/Tooltip'
 import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined'
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
-import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined'
 import EventAvailableOutlinedIcon from '@material-ui/icons/EventAvailableOutlined'
 import { useStyles } from './style'
 
 import TodoAdd from '../TodoAdd'
-
-import { STATUSES } from '../../../constants'
+import TodoStatus from './TodoStatus'
+import TodoAvatar from './TodoAvatar'
 
 const Todo = ({ todo, open, handleClose, selectedTodo, setSelectedTodo, deleteTodo }) => {
     const classes = useStyles()
-    const { t } = useTranslation()
-
-    const getAvatarLetters = name =>
-        name
-            .split(' ')
-            .map(item => item.toUpperCase().substring(0, 1))
-            .join('')
-
-    const findStatus = () => STATUSES.find(({ status }) => status === todo.status)
 
     const getTimeRemaining = useMemo(() => {
-        const diff = Date.parse(todo.dueDate) - Date.now()
-        return Math.round(diff / (1000 * 60 * 60 * 24))
+        if (!todo.dueDate) return
+
+        const dueDate = Date.parse(todo.dueDate)
+        return formatDistanceToNow(dueDate, { addSuffix: true })
     }, [todo.dueDate])
 
     return (
         <Grid container alignItems="center" spacing={1} className={classes.todo}>
             <Grid item xs={1}>
                 <Grid container justify="center">
-                    <Tooltip title={findStatus().name}>
-                        <IconButton aria-label="status">
-                            <div
-                                className={classes.todoStatus}
-                                style={{ backgroundColor: findStatus().color }}
-                            ></div>
-                        </IconButton>
-                    </Tooltip>
+                    <TodoStatus todo={todo} />
                 </Grid>
             </Grid>
 
@@ -55,17 +38,7 @@ const Todo = ({ todo, open, handleClose, selectedTodo, setSelectedTodo, deleteTo
 
             <Grid item xs={1}>
                 <Grid container justify="center">
-                    <Avatar className={classes.todoAvatar}>
-                        {todo.assign ? (
-                            <Tooltip title={todo.assign}>
-                                <Typography variant="caption" display="block">
-                                    {getAvatarLetters(todo.assign)}
-                                </Typography>
-                            </Tooltip>
-                        ) : (
-                            <PersonOutlineOutlinedIcon />
-                        )}
-                    </Avatar>
+                    <TodoAvatar todo={todo} />
                 </Grid>
             </Grid>
 
@@ -73,11 +46,7 @@ const Todo = ({ todo, open, handleClose, selectedTodo, setSelectedTodo, deleteTo
                 <Grid container justify="center">
                     <Typography variant="body2">
                         {todo.dueDate ? (
-                            `${
-                                getTimeRemaining > 0
-                                    ? `${getTimeRemaining} ${t('days-left')}`
-                                    : `${t('last-day')}`
-                            }`
+                            getTimeRemaining
                         ) : (
                             <IconButton aria-label="due date" disabled color="primary">
                                 <EventAvailableOutlinedIcon />
